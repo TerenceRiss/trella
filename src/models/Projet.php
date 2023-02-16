@@ -20,3 +20,13 @@ function findAll()
     $projects = $pdoStatement->fetchAll();
     return $projects;
 }
+
+function findOne ($id)
+{
+    $pdo = getConnection();
+    $sql = "SELECT * FROM `Project` . `id` = $id";
+    $pdoStatement = $pdo->prepare($sql);
+    $result = $pdoStatement->execute();
+    $projects = $pdoStatement->fetch();
+    return $projects;
+}
